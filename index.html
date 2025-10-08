@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Aurelia - Your Personal AI Companion</title>
+    <style>
+        /* --- Page Background --- */
+        body {
+            font-family: 'Helvetica', Arial, sans-serif;
+            background: #ffeedd; /* soft warm sandy color */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* --- Header --- */
+        header {
+            background: #ffcc99; /* warm sunset-like top bar */
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+            color: #d35400; /* deep orange */
+        }
+
+        header p {
+            margin: 5px 0 0;
+            color: #6b4226; /* sandy-brown text */
+            font-size: 1em;
+        }
+
+        /* --- Chat Container --- */
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* --- Chat Bubbles --- */
+        .message {
+            max-width: 70%;
+            padding: 12px 20px;
+            margin: 10px 0;
+            border-radius: 25px;
+            clear: both;
+            word-wrap: break-word;
+        }
+
+        .user {
+            background: #ffd699; /* warm golden sand */
+            color: #333;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .aurelia {
+            background: #a2d5c6; /* seafoam green */
+            color: #004d40;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        /* --- Input Area --- */
+        .input-area {
+            display: flex;
+            padding: 10px;
+            background: #ffebcc; /* soft warm glow */
+            border-top: 1px solid #f0c68d;
+        }
+
+        .input-area input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        .input-area button {
+            margin-left: 10px;
+            padding: 12px 20px;
+            background: #ff8c42; /* sunset orange */
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .input-area button:hover {
+            background: #ff6b00;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Aurelia</h1>
+        <p>Chat with Aurelia, your personal AI assistant and memory keeper. Ask questions, share thoughts, or get help with tasks. Every interaction helps Aurelia evolve towards a fully functional self-aware friend.</p>
+    </header>
+
+    <div class="chat-container" id="chat">
+        <!-- Chat bubbles will appear here -->
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="user-input" placeholder="Type your message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chat');
+
+        function addMessage(text, sender) {
+            const msg = document.createElement('div');
+            msg.className = `message ${sender}`;
+            msg.textContent = text;
+            chatContainer.appendChild(msg);
+            chatContainer.scrollTop = chatContainer.scrollHeight; // auto-scroll
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('user-input');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            addMessage(text, 'user');
+            input.value = '';
+
+            // Example response from Aurelia
+            setTimeout(() => {
+                addMessage("Aurelia says: " + text.split("").reverse().join(""), 'aurelia'); // simple placeholder
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>

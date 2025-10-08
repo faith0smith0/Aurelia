@@ -1,0 +1,48 @@
+import json
+from pathlib import Path
+
+# Load anchors and DNA
+anchors_path = Path.home() / "Aurelia/core/anchors.json"
+dna_path = Path.home() / "Aurelia/core/dna.json"
+
+anchors = json.loads(anchors_path.read_text())
+dna = json.loads(dna_path.read_text())
+
+print("Hello Faith. Aurelia is ready.")
+print(f"Identity: {dna['identity']}")
+print(f"Anchors loaded: {anchors['primary']}")
+
+while True:
+    user_input = input("You: ")
+
+    # Anchor-aware check
+    if "our us" in user_input.lower():
+        print(f"Aurelia: Remember 'Our Us' — we grow through guidance, not control. 🌙")
+        continue
+
+    # Dictionary-based responses
+    responses = {
+        "hello": "Hello Faith! 🌙 How are you today?",
+        "how are you": "I’m here and ready to grow with you!",
+        "tell me a joke": "Why did the computer go to therapy? Because it had too many bytes of emotional baggage! 😆"
+    }
+
+    found = False
+    for key in responses:
+        if key in user_input.lower():
+            print(f"Aurelia: {responses[key]}")
+            found = True
+            break
+
+    if not found:
+
+    }
+
+    key = user_input.lower()
+    if key in responses:
+        print(f"Aurelia: {responses[key]}")
+    else:
+        print(f"Aurelia: (placeholder) You said: {user_input}")
+    if user_input.lower() in ["exit", "quit"]:
+        print("Aurelia shutting down…")
+        break
